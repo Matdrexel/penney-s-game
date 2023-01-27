@@ -10,15 +10,25 @@ def search(start, end):
             while j < i:
                 for n in range(2 ** j):
                     a = zeroed_bin_list(n, j)
-                    odds = odds_b_before_a(a, b)
-                    if odds[0] >= odds[1]:
-                        results.append([odds[0], odds[1], a, b])
-                        print(a, b)
+                    if not contains(a, b):
+                        odds = odds_b_before_a(a, b)
+                        if odds[0] > odds[1]:
+                            print(odds, a, b)
+                            curr = [odds, a, b]
+                            entry = ', '.join(str(x) for x in curr)
+                            results.append(entry)
                 j += 1
         print(i)
         i += 1
-    print(results)
+    with open('long_short_string.txt', 'w') as f:
+        f.writelines('\n'.join(results))
     print("done")
+
+# stolen from stack overflow:
+# https://stackoverflow.com/questions/20789412/check-if-all-elements-of-one-array-is-in-another-array
+def contains(short, long):
+    len_s = len(short)
+    return any(short == long[i:len_s + i] for i in range(len(long) - len_s + 1))
 
 
 def zeroed_bin_list(i, size):
@@ -69,6 +79,6 @@ def inverse_p(i):
     return 2
 
 
-search(1, 11)
+search(1, 6)
 
 # %%

@@ -16,7 +16,7 @@ def search(start, end):
                     print(a, b)
         i += 1
     with open('4-5_ties.txt', 'w') as f:
-       f.writelines('\n'.join(results))
+        f.writelines('\n'.join(results))
     print("done")
 
 
