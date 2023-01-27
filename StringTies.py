@@ -48,7 +48,7 @@ def star(str1, str2):
     m = len(str1)
     for i in range(m):
         product = 1
-        for j in range(i, m - i):
+        for j in range(i, m):
             product *= delta(j, j - i, str1, str2)
         result += product
     return result
