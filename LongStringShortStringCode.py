@@ -76,7 +76,11 @@ def delta(i, j, str1, str2):
 
 
 def inverse_p(i):
-    return 2
+    # copied from LongShortString.py
+    if i == 0:
+        return 1 / p
+    elif i == 1:
+        return 1 / (1 - p)
 
 
 search(1, 6)
