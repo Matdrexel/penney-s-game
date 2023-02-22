@@ -13,9 +13,10 @@ def search(start, end):
             while j < i:
                 for n in range(2 ** j):
                     a = zeroed_bin_list(n, j)
-                    x = np.linspace(0.0001, 1, 100)
-                    y = odds_b_before_a(a, b, x)
-                    plt.plot(x, y)
+                    if not contains(a, b):
+                        x = np.linspace(0.0001, 1, 100)
+                        y = odds_b_before_a(a, b, x)
+                        plt.plot(x, y)
                 j += 1
         print(i)
         i += 1
@@ -24,7 +25,7 @@ def search(start, end):
     plt.ylabel("odds of b")
     plt.title("Odds of B winning")
     # Adding legend, which helps us recognize the curve according to it's color
-    plt.legend()
+    # plt.legend()
 
     # To load the display window
     plt.show()
@@ -90,6 +91,12 @@ def inverse_p(i, p):
         return 1 / (1 - p)
 
 
-search(5, 6)
+search(6, 6)
+
+# p = np.linspace(0.0001, 1, 100)
+# q = odds_b_before_a([1, 1, 1], [1, 0, 0, 0], p)
+# plt.plot(x, y)
+#
+# plt.show()
 
 # %%
