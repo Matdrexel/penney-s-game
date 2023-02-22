@@ -13,7 +13,7 @@ def search(start, end):
             while j < i:
                 for n in range(2 ** j):
                     a = zeroed_bin_list(n, j)
-                    if not contains(a, b):
+                    if not contains(a, b):  # implement selector functions here
                         x = np.linspace(0.0001, 1, 100)
                         y = odds_b_before_a(a, b, x)
                         plt.plot(x, y)
@@ -93,10 +93,10 @@ def inverse_p(i, p):
 
 search(6, 6)
 
-# p = np.linspace(0.0001, 1, 100)
-# q = odds_b_before_a([1, 1, 1], [1, 0, 0, 0], p)
-# plt.plot(x, y)
-#
-# plt.show()
+p = np.linspace(0.0001, 1, 100)
+# q = odds_b_before_a([0, 1, 0, 0, 0, 0, 1, 0], [0, 0, 1, 0, 0, 1, 0, 0], p) -> weird!
+# q = odds_b_before_a([0, 1, 1, 0], [1, 0, 1, 0], p) -> straight line
+# q = odds_b_before_a([1, 1, 0, 1], [0, 1, 1, 1], p) -> weird
+plt.plot(p, q)
 
-# %%
+plt.show()
