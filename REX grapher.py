@@ -21,7 +21,7 @@ def star(str1, str2, p):
 
 
 def delta(i, j, str1, str2, p):
-    if (0 <= i < len(str1)) & (0 <= j < len(str2)):
+    if (0 <= i < len(str1)) and (0 <= j < len(str2)):
         if str1[i] == str2[j]:
             return inverse_p(str2[j], p)
         else:
@@ -43,9 +43,15 @@ def prob(a, b, n):
         res.append(odds_b_before_a(a, b, p))
     return res
 
+def coin(x):
+    if x == 0:
+        return "H"
+    elif x == 1:
+        return "T"
+
 n = 100
-a = [1,1,0,0,0,0,1,1]
-b = [0,0,1,1,1,1,0,0]
+a = [0,1,1,1,1,1,0,1]
+b = [1,1,0,1,0,1,1,1]
 probability = prob(a,b,n)
 
 x = np.array([(x / n) for x in range(1, n)])
@@ -62,11 +68,11 @@ for xitem, yitem in np.nditer([x,y]):
         x2.append(xitem)
         y2.append(yitem)
 plt.scatter(x2, y2, color = "red", zorder = 2)
-astr = "".join(str(x) for x in a)
-bstr = "".join(str(x) for x in b)
+astr = "".join(coin(x) for x in a)
+bstr = "".join(coin(x) for x in b)
 title1 = "Probability " + bstr + " appears before " + astr
-title2 = "Probability of generating 0"
-plt.title(bstr + " vs "  + astr, fontsize = 20, pad = 10)
+title2 = "Probability of a coin landing on Heads"
+plt.title(bstr + " raced against "  + astr, fontsize = 20, pad = 10)
 plt.xlabel(title2, fontsize = 14, labelpad = 15)
 plt.ylabel(title1, fontsize = 14, labelpad = 20)
 plt.show()
